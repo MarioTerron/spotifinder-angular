@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="spotifinderApp" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spotifinder 🔎</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600,900|PT+Sans:100,200,400,600">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<header>
+			<div class="container">
+				<img height="90" src="img/logo.png" alt="">
+				<h1 id="logo">Spotifinder</h1>
+			</div>
+		</header>
+
+		<section>
+			<div class="container">
+				<p class="app-description" > With <strong>Spotifinder Web App</strong> you can search your favorite artist and list their albums and the album's tracks. If you click on the song, it will open Spotify and it will play.
+				</p>
+				<div ng-controller="searchController" class="search-container">
+					<h2>Search</h2>
+					<form class="form-inline">
+						<div class="form-group">
+							<input ng-model="userSearch" id="search-input" class="form-input" type="text" placeholder="Enter an artist name...">
+							<button ng-click="searchArtist()" id="search-btn" class="btn btn-success" type="submit">Search</button>
+						</div>
+					</form>
+				</div>
+				<div ng-controller="artistsController" class="artists-container">
+					<h2>Artist</h2>
+					<!-- <p ng-show="artists.length">Results of search: <strong>{{currentUserSearch}}</strong></p> -->
+					<select ng-model="artistSelected" ng-change="searchAlbums()" id="artists-selection" class="form-control">
+						<option ng-selected="selected" value="" disabled>Select an artist</option>
+						<option ng-repeat="artist in artists" value="{{artist.id}}" ng-model="artistNameValue">{{artist.name}}</option>
+					</select>
+				</div>
+				<div ng-controller="albumsController" class="albums-container">
+					<h2>Album</h2>
+					<select ng-model="albumSelected" ng-change="searchTracks()" id="albums-selection" class="form-control">
+						<option ng-selected="selected" value="" disabled>Select an album</option>
+						<option ng-repeat="album in albums" value="{{album.id}}">{{album.name}}</option>
+					</select>
+				</div>
+				<div class="tracks-container">
+					<h2>Tracks</h2>
+					<ul id="tracks-selection" class="list-group">
+						<li class="list-group-item"></li>
+						<li ng-repeat="track in tracks" class="list-group-item"><a href="{{track.external_urls.spotify}}">{{track.name}}</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<p>&copy;2017 Spotifinder, all rights reserved. Made with <span class="fa fa-heart"></span> by <a href="http://www.twitter.com/marioterron157">Mario Terron</a></p>
+			</div>
+		</footer>
+	</div>
+	<!-- /#wrapper -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+
+	<script src="js/app.js"></script>
+	<script src="js/controllers/searchController.js"></script>
+	<script src="js/controllers/artistsController.js"></script>
+	<script src="js/controllers/albumsController.js"></script>
+	<script src="js/services/SpotifinderService.js"></script>
+</body>
+
+</html>

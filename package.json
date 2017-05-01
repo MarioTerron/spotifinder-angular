@@ -1,0 +1,16 @@
+{
+  "name": "demo-angular-spotify",
+  "version": "1.0.0",
+  "description": "A responsive Spotify Web App in Angular made in the Skylab Coders Academy Full Stack Web Development Bootcamp.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mario Terron",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
