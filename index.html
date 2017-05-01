@@ -36,7 +36,7 @@
 				</div>
 				<div ng-controller="artistsController" class="artists-container">
 					<h2>Artist</h2>
-					<!-- <p ng-show="artists.length">Results of search: <strong>{{currentUserSearch}}</strong></p> -->
+					<p ng-show="artists.length">Results of search: <strong>{{currentUserSearch}}</strong></p>
 					<select ng-model="artistSelected" ng-change="searchAlbums()" id="artists-selection" class="form-control">
 						<option ng-selected="selected" value="" disabled>Select an artist</option>
 						<option ng-repeat="artist in artists" value="{{artist.id}}" ng-model="artistNameValue">{{artist.name}}</option>
